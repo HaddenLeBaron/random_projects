@@ -60,7 +60,7 @@ def main():
         for label in labels:
             print(f'name:{label["name"]}\nid:{label["id"]}')
     except HttpError as error:
-        # TODO(developer) - Handle errors from gmail API.
+        #  - Handle errors from gmail API.
         print(f"An error occurred: {error}")
 
 
@@ -100,7 +100,7 @@ def compile_label():
             msg = service.users().messages().get(userId="me", id=message['id']).execute()
             email_data = msg["payload"]
             is_response = False
-            # TODO TURN ON FOR NEW PERSON
+            # TURN ON FOR NEW PERSON
             print(email_data["headers"])
             for d in email_data["headers"]:
                 if d["name"] == 'Date':
@@ -109,7 +109,7 @@ def compile_label():
                     if "Re:" in d["value"]:
                         is_response = True
                     email_dict["subject"] = str(d["value"]).replace("\'", "'").replace("Fw:", "")
-                # TODO Update From for new person
+                # Update From for new person
                 if d["name"] == "From":
                     if d["value"] != target_sender:
                         is_response = True
@@ -136,7 +136,7 @@ def compile_label():
             if not is_response:
                 email_list.append(email_dict)
     except HttpError as error:
-        # TODO(developer) - Handle errors from gmail API.
+        # (developer) - Handle errors from gmail API.
         print(f"An error occurred: {error}")
     return done
 
