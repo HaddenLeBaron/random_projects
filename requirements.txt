@@ -1,0 +1,2 @@
+tksvg~=0.7.4
+svg-turtle~=0.4.2
